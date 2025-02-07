@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_prams)
     if @user.save
       reset_session
+      remember @user
       login(@user)
       flash[:success] = "Created User Account Successfly"
       redirect_to @user
