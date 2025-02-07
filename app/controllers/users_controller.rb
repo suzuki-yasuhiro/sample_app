@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_prams)
     if @user.save
+      reset_session
+      login(@user)
       flash[:success] = "Created User Account Successfly"
       redirect_to @user
     else
